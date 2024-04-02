@@ -1,0 +1,5 @@
+.col-md-6 div {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid orange;
+}

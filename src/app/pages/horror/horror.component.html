@@ -1,0 +1,72 @@
+<section class="mt-5 pt-4 mx-2">
+  <div class="container-fluid">
+    <h1
+      class="text-capitalize bg-black w-100 p-2 rounded shadow text-center mx-auto border border-1 border-warning text-warning fw-bolder mb-4"
+    >
+      discover Horor Movies <img src="assets/horror.png" alt="" class="mb-2" />
+    </h1>
+    <div class="row g-3 justify-content-center">
+      <div
+        class="col-lg-2 col-md-3"
+        *ngFor="
+          let item of horror
+            | paginate
+              : {
+                  id: 'moviePaginate',
+                  itemsPerPage: pageSize,
+                  currentPage: currentPage,
+                  totalItems: total
+                }
+        "
+      >
+        <div class="card-container">
+          <img
+            [routerLink]="['/details', item.id]"
+            [ngClass]="{ 'd-none': !item.poster_path }"
+            height="320"
+            class="w-100 rounded shadow"
+            src="https://image.tmdb.org/t/p/original/{{ item.poster_path }}"
+            alt="movie poster"
+          />
+
+          <span class="bg-dark p-1 rounded"
+            ><i class="fa-solid fa-star text-warning"></i
+            >{{ item.vote_average | number : "1.0-0" }}</span
+          >
+
+          <p class="bg-dark p-1 rounded">
+            {{ item.original_title.substring(0, 20) }}
+          </p>
+
+          <div [routerLink]="['/details', item.id]" class="layer rounded gap-3">
+            <div class="icon-container me-2">
+              <i class="fa-solid fa-info text-warning"></i>
+            </div>
+            <small class="h5 border border-1 border-white p-1">
+              More Details <i class="fa-solid fa-arrow-right-long p-0 m-0"></i
+            ></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <pagination-controls
+      class="my-pagination"
+      id="moviePaginate"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9"
+      [directionLinks]="true"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"
+    >
+    </pagination-controls>
+  </div>
+</section>

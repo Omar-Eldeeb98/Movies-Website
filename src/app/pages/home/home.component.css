@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+
+.bungee-spice-regular {
+    font-family: "Bungee Spice", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.carousel-caption h2 {
+    width: fit-content !important;
+    font-weight: bolder;
+    color: orange;
+    background-color: rgba(0, 0, 0, 0.763);
+}
+
+.carousel-caption p {
+    width: fit-content !important;
+    font-weight: normal;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.763);
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    line-height: 1.8rem;
+}
+
+h2.h2__ {
+    width: fit-content !important;
+    background-color: black;
+    color: orange;
+}
+
+.poster_ {
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.poster_ .layer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.814);
+    display: flex;
+    transition: all 0.3s ease;
+
+
+}
+
+.movie-card {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.movie-card .layer_ {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 166, 0, 0.418);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.movie-card:hover .layer_ {
+    top: 0;
+}
+
+.movie-card .layer_ .icon-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: black;
+    font-size: 20px !important;
+}
+
+.poster_:hover .layer {
+    top: 0;
+}
+
+.poster_ .layer p {
+
+    position: absolute;
+    top: 10%;
+    z-index: 9;
+    color: orange !important;
+
+}
+
+.poster_ span {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.poster_ p {
+    width: fit-content;
+    text-align: start;
+    position: absolute;
+    top: 82%;
+    left: 2%;
+
+
+}
+
+.poster_:hover {
+    transform: scale(1.05);
+
+
+}
+
+div.movie-card {
+    transition: all 0.3s ease;
+}
+
+div.movie-card img {
+    height: 300px !important;
+    cursor: pointer;
+}
+
+div.movie-card p {
+
+    width: fit-content;
+    position: absolute;
+    top: 85%;
+    left: 2%;
+
+}
+
+div.movie-card span {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+}
+
+.movie-card:hover {
+
+    transform: rotate(-3deg) scale(1.07);
+}
+
+._h2 {
+    width: fit-content !important;
+}
+
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.752);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: orange;
+    padding: 4px 12px;
+    border-radius: 8px;
+    color: black;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a {
+
+    color: white;
+    background-color: gray;
+    border-radius: 8px;
+    margin-inline: 4px;
+    text-decoration: none;
+
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover {
+    background-color: orange;
+    color: black;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .disabled {
+    color: white;
+    background-color: rgb(48, 46, 46);
+    border-radius: 8px;
+    margin-inline: 4px;
+    text-decoration: none;
+}

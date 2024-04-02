@@ -1,0 +1,75 @@
+<section class="mt-5 pt-5">
+  <div class="container">
+    <div class="">
+      <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+        <div class="d-flex align-items-center justify-content-between gap-2">
+          <input
+            formControlName="movieName"
+            type="text"
+            class="form-control p-3"
+            placeholder="search Movies"
+          />
+          <div class="search-icon p-3">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div
+      class="row mt-3 g-3 justify-content-center"
+      *ngIf="searchResult2.length > 0; else search"
+    >
+      <div
+        class="col-md-3 col-lg-2"
+        *ngFor="let item of searchResult"
+        [ngClass]="{ 'd-none': !item.poster_path }"
+      >
+        <div [ngClass]="{ 'd-none': !item.poster_path }" class="card-container">
+          <img
+            [routerLink]="['/details', item.id]"
+            class="w-100 rounded shadow"
+            height="300"
+            src="https://image.tmdb.org/t/p/original/{{ item.poster_path }}"
+            alt="poster"
+          />
+
+          <p class="bg-dark text-warning rounded p-1 small">
+            {{ item.original_title.substring(0, 20) }}
+          </p>
+
+          <span class="bg-dark rounded p-1">
+            {{ item.vote_average | number : "1.0-0" }}
+            <i class="fa-solid fa-star text-warning"></i
+          ></span>
+
+          <div class="layer rounded" [routerLink]="['/details', item.id]">
+            <div class="icon-container me-2">
+              <i class="fa-solid fa-info text-warning"></i>
+            </div>
+            <small class="h5 border border-1 border-white p-1">
+              More Details <i class="fa-solid fa-arrow-right-long p-0 m-0"></i
+            ></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #search>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div
+        class="col-md-6 col-lg-6 mx-center d-flex flex-column justify-content-center align-items-center"
+      >
+        <img src="assets/movie.png" alt="logo" class="search__ w-75" />
+        <p
+          class="text-warning text-uppercase fw-bold h2 mt-3 text-center w-100"
+        >
+          serch results will appear here
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>

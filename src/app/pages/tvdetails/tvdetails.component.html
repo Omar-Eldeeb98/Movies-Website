@@ -1,0 +1,182 @@
+<section class="mt-5 pt-5 mb-2">
+  <div class="container-fluid">
+    <div class="row p-2 align-items-center">
+      <div class="col-md-4">
+        <div class="poster-container mb-3">
+          <img
+            class="w-100 rounded shadow"
+            src="https://image.tmdb.org/t/p/original/{{
+              tvDetailsResult.backdrop_path || tvDetailsResult.poster_path
+            }}"
+            alt="poster"
+          />
+
+          <div class="text-center">
+            <a
+              class="btn btn-outline-warning text-uppercase mt-3"
+              href="https://www.themoviedb.org/video/play?key={{ tvVideo }}"
+              target="_blank"
+              >Watch Trailer
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="data-container">
+          <div
+            class="d-flex align-items-center justify-content-between gap-4 mt-2 flex-wrap"
+          >
+            <h2 class="text-capitalize text-warning fs-1 fw-bolder">
+              {{
+                tvDetailsResult.original_name || tvDetailsResult.original_title
+              }}
+            </h2>
+
+            <p class="text-warning bg-black rounded p-2">
+              {{
+                tvDetailsResult.first_air_date || tvDetailsResult.release_date
+              }}
+            </p>
+          </div>
+          <hr />
+
+          <div *ngIf="tvDetailsResult.overview">
+            <p
+              class="text-capitalize h3 bg-black text-warning p-2 rounded shadow-lg"
+            >
+              {{ tvDetailsResult.overview }}
+            </p>
+          </div>
+          <hr *ngIf="tvDetailsResult.overview" />
+
+          <p
+            *ngIf="tvDetailsResult.budget"
+            class="bg-black text-white rounded p-2 mx-1"
+          >
+            {{ tvDetailsResult.budget }}$
+          </p>
+
+          <p
+            *ngIf="tvDetailsResult.spoken_languages[0].name"
+            class="bg-black text-white rounded p-2 mx-1"
+          >
+            {{ tvDetailsResult.spoken_languages[0].name }}
+          </p>
+          <p
+            *ngIf="tvDetailsResult.genres[0].name"
+            class="bg-black text-white rounded p-2 mx-1"
+          >
+            {{ tvDetailsResult.genres[0].name }}
+          </p>
+
+          <p
+            *ngIf="tvDetailsResult.production_countries[0].name"
+            class="bg-black text-white rounded p-2 mx-1"
+          >
+            {{ tvDetailsResult.production_countries[0].name }}
+          </p>
+          <a
+            [href]="tvDetailsResult.homepage"
+            target="_blank"
+            class="text-decoration-none bg-black p-2 rounded text-success"
+            ><i class="fa-solid fa-link me-1"></i> Website</a
+          >
+
+          <p
+            *ngIf="tvDetailsResult.vote_average"
+            class="bg-black text-warning rounded p-2 mx-1"
+          >
+            {{ tvDetailsResult.vote_average | number : "1.0-0" }}
+            <i class="fa-solid fa-star text-warning"></i>
+          </p>
+
+          <p
+            *ngIf="tvDetailsResult.number_of_episodes"
+            class="bg-black text-white rounded p-2 mx-1"
+          >
+            Episodes : {{ tvDetailsResult.number_of_episodes }}
+          </p>
+          <p
+            *ngIf="tvDetailsResult.number_of_seasons"
+            class="bg-black text-white rounded p-2 mx-1"
+          >
+            Seasons : {{ tvDetailsResult.number_of_seasons }}
+          </p>
+        </div>
+      </div>
+
+      <hr class="my-4" />
+
+      <div class="row align-items-start w-100 mx-auto">
+        <div class="col-md-8 mx-auto" *ngIf="tvCast.length > 0">
+          <div class="cast-contaoner">
+            <h3
+              class="text-uppercase w-100 mb-3 mx-auto bg-black rounded p-2 shadow text-center text-warning fw-bolder"
+            >
+              Casting Team
+            </h3>
+
+            <div class="row g-3 justify-content-center mb-3">
+              <div
+                class="col-md-3 col-lg-2 col-sm-4"
+                *ngFor="let item of tvCast"
+                [ngClass]="{ 'd-none': !item.profile_path }"
+              >
+                <div
+                  class="item-container"
+                  [ngClass]="{ 'd-none': !item.profile_path }"
+                >
+                  <img
+                    class="w-100 rounded shadow"
+                    src="https://image.tmdb.org/t/p/original/{{
+                      item.profile_path
+                    }}"
+                    alt=""
+                  />
+
+                  <div class="layer rounded">
+                    <h5 class="small">
+                      {{ item.original_name }}
+                    </h5>
+                    <hr class="w-75 mx-auto" />
+                    <p class="bg-warning text-black fw-bold p-1 rounded small">
+                      {{ item.character }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-4 mx-auto"
+          *ngIf="tvDetailsResult.production_companies.length > 0"
+        >
+          <h3
+            class="text-uppercase w-100 mb-3 mx-auto bg-black rounded p-2 shadow text-center text-warning fw-bolder"
+          >
+            Producing companies
+          </h3>
+          <div
+            *ngFor="let x of tvDetailsResult.production_companies.slice(0, 3)"
+            class="mb-5"
+          >
+            <img
+              *ngIf="x.logo_path"
+              src="https://image.tmdb.org/t/p/original/{{ x.logo_path }}"
+              alt="company"
+              class="w-100 mb-2 img-thumbnail"
+            />
+            <p
+              *ngIf="x.logo_path"
+              class="h3 bg-black text-danger text-center rounded p-2 my-2"
+            >
+              {{ x.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

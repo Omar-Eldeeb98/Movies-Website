@@ -1,0 +1,30 @@
+<div class="d-flex flex-column justify-content-between vh-100">
+  <!--? navbar component-->
+  <app-navbar></app-navbar>
+
+  <!--? outlet component-->
+  <div class="">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!--?  footer will be here soon -->
+  <app-footer></app-footer>
+</div>
+<!--? fixed icon -->
+<div class="fixed-item" (click)="scrolTop()">
+  <i class="fa-solid fa-angle-up"></i>
+</div>
+
+<!-- default spinner  -->
+
+<ngx-spinner
+  type="ball-scale-multiple"
+  bdColor="rgba(0, 0, 0, 1)"
+></ngx-spinner>
+
+<!-- <ngx-spinner
+  bdColor="rgba(0, 0, 0, 1)"
+  template="<img src='assets/movie.png' />"
+  size="small"
+>
+</ngx-spinner> -->
